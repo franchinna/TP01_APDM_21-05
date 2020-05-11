@@ -24,7 +24,7 @@ h2 {
 
 
 
-#confirmacion {
+#confirmacion, #login, #loginConfirmacion {
     display: none;
 }
 
