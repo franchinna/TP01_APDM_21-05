@@ -1,39 +1,53 @@
-nav input::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
-  color: white!important;
-  opacity: 1; /* Firefox */
+nav input::placeholder {
+    /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: white !important;
+    opacity: 1;
+    /* Firefox */
 }
 
-#registro{
+h1 {
+    font-size: 0 !important;
+    padding: 0px !important;
+    height: 0px !important;
+    line-height: 0px !important;
+}
+
+h3,
+h2 {
+    color: #FF9800;
+}
+
+#registro {
     display: block;
     color: #495057;
 }
 
-h3, h2{
-    color: #FF9800;
-}
 
-#confirmacion{
+
+#confirmacion {
     display: none;
 }
 
-label{
+label {
     display: none;
 }
 
-.form-control, .is-focused .form-control {
-    background-image: linear-gradient(to top, #FF9800 2px, rgba(156, 39, 176, 0) 2px), linear-gradient(to top, #d2d2d2 1px, rgba(210, 210, 210, 0) 1px)!important;
+.form-control,
+.is-focused .form-control {
+    background-image: linear-gradient(to top, #FF9800 2px, rgba(156, 39, 176, 0) 2px), linear-gradient(to top, #d2d2d2 1px, rgba(210, 210, 210, 0) 1px) !important;
 }
 
-.form-check-label{
+.form-check-label {
     display: inline-block;
 }
 
 
 
-select, select option  {
-    color: grey!important;
+select,
+select option {
+    color: grey !important;
 }
 
-.badge{
+.badge {
     padding: 2px 4px;
 }
