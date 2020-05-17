@@ -22,7 +22,7 @@
 
     <div id="app">
         <header>
-            <nav class="navbar navbar-expand-lg bg-danger">
+            <nav class="navbar navbar-expand-lg bg-warning">
                 <div class="container">
                     <div class="navbar-translate">
                         <h1 class="navbar-brand" href="#">Franco Cinnante VUE.JS</h1>
@@ -63,11 +63,10 @@
                         </ul>
 
                         <form class="form-inline ml-auto">
-
-
                             <div class="togglebutton ml-auto">
                                 <label>
-                                    <input type="checkbox"><!--checked=""-->
+                                    <input type="checkbox">
+                                    <!--checked=""-->
                                     <span class="toggle"></span>
                                     Dark Mode
                                 </label>
@@ -77,32 +76,36 @@
                 </div>
             </nav>
         </header>
+
         <main>
+            <div class="alert alert-danger col" role="alert">
+                <p>
+                    A simple danger alert—check it out!
+                </p>
+            </div>
+            
             <div class="container">
                 <div class="row justify-content-center">
                     <div id="registro" class="col-md-8 col my-3" v-show="viewSelected === 'registro'">
 
                         <form>
                             <div class="form-row">
+
+
+
                                 <h3 class="col-12">Competa tus datos personales</h3>
                                 <div class="form-group col-md-6">
                                     <label for="inputNombre">Nombre</label>
-                                    <input type="nombre" class="form-control" id="inputNombre" placeholder="Ingresa tu nombre">
+                                    <input type="nombre" class="form-control" id="inputNombre" placeholder="Ingresa tu nombre" v-model.trim="formularioPrincipal.nombre">
                                 </div>
                                 <div class="form-group col-md-6">
                                     <label for="inputApellido">Apellido</label>
-                                    <input type="apellido" class="form-control" id="inputApellido" placeholder="Ingresa tu apellido">
+                                    <input type="apellido" class="form-control" id="inputApellido" placeholder="Ingresa tu apellido" v-model.trim="formularioPrincipal.apellido">
                                 </div>
                                 <div class="form-group col-12">
                                     <label for="inputEmail4">Ingresa tu Email</label>
-                                    <input type="email" class="form-control" id="inputEmail4" placeholder="Ingresa tu email">
+                                    <input type="email" class="form-control" id="inputEmail4" placeholder="Ingresa tu email" v-model.trim="formularioPrincipal.email">
                                 </div>
-
-                                <div class="form-group col-12">
-                                    <label for="inputConfirEmail">Confirmar Email</label>
-                                    <input type="email" class="form-control" id="inputConfirEmail" placeholder="Confirma tu email">
-                                </div>
-
                                 <div class="form-group col-md-6">
                                     <label for="inputPassword4">Password</label>
                                     <input type="password" class="form-control" id="inputPassword4" placeholder="Ingresa una password">
@@ -115,13 +118,9 @@
 
                                 <div class="form-group col-md-12 my-3">
                                     <h3 class="pb-3">Datos de Residencia</h3>
-                                    <label for="exampleFormControlSelect1">Example select</label>
-                                    <select class="form-control selectpicker" data-style="btn btn-link" id="exampleFormControlSelect1">
-                                        <option selected>Elige tu Provincia</option>
-                                        <option>2</option>
-                                        <option>3</option>
-                                        <option>4</option>
-                                        <option>5</option>
+                                    <label for="PaisDeOrigen" class="PaisDeOrigen">Selecciona tu pais de origen</label>
+                                    <select class="form-control selectpicker" name="PaisDeOrigen" data-style="btn btn-link" id="PaisDeOrigen" v-model="formularioPrincipal.paisOrigen">
+                                        <option v-for="pais in formularioPrincipal.paises">{{pais.name}}</option>
                                     </select>
                                 </div>
 
@@ -130,7 +129,7 @@
                                     <div class="row text-md-center ml-md-0 ml-4">
                                         <div class="form-check col-md-4 mt-md-2 form-check-radio">
                                             <label class="form-check-label">
-                                                <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1">
+                                                <input class="form-check-input" type="radio" name="genero" id="femenino" value="femenino" v-model="formularioPrincipal.sexo">
                                                 Femenino
                                                 <span class="circle">
                                                     <span class="check"></span>
@@ -139,7 +138,7 @@
                                         </div>
                                         <div class="form-check col-md-4 mt-md-2 form-check-radio">
                                             <label class="form-check-label">
-                                                <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2">
+                                                <input class="form-check-input" type="radio" name="genero" id="masculino" value="masculino" v-model="formularioPrincipal.sexo">
                                                 Masculino
                                                 <span class="circle">
                                                     <span class="check"></span>
@@ -148,7 +147,7 @@
                                         </div>
                                         <div class="form-check col-md-4 mt-md-2 form-check-radio">
                                             <label class="form-check-label">
-                                                <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2" checked>
+                                                <input class="form-check-input" type="radio" name="genero" id="NN" value="NN" v-model="formularioPrincipal.sexo">
                                                 Prefiero no decirlo
                                                 <span class="circle">
                                                     <span class="check"></span>
@@ -162,15 +161,15 @@
                             <div class="form-group">
                                 <div class="form-check">
                                     <label class="form-check-label">
-                                        <input class="form-check-input" type="checkbox" value="">
-                                        Check me out
+                                        <input class="form-check-input" type="checkbox" value="term" id="term" name="term" v-model="formularioPrincipal.terms">
+                                        Acepto los terminos
                                         <span class="form-check-sign">
                                             <span class="check"></span>
                                         </span>
                                     </label>
                                 </div>
                             </div>
-                            <button type="submit" class="btn btn-warning">Confirmar Registro</button>
+                            <button type="button" @click="changeView('confirmacion')" class="btn btn-warning" :disabled="!formularioPrincipal.terms">Confirmar Registro</button>
                         </form>
                     </div>
 
@@ -189,7 +188,7 @@
                                 <h3>Estos son tus datos</h3>
 
                                 <ul class="row justify-content-center list-group-flush">
-                                    <li class="col-md-5 list-group-item"><span class="material-icons">account_box</span> -nombre y apellido-</li>
+                                    <li class="col-md-5 list-group-item"><span class="material-icons">account_box</span>{{formularioPrincipal.name}}</li>
                                     <li class="col-md-5 list-group-item"><span class="material-icons">alternate_email</span> email</li>
                                     <li class="col-md-5 list-group-item"><span class="material-icons">language</span> Pais de residencia</li>
                                     <li class="col-md-5 list-group-item"><span class="material-icons">wc</span> Género </li>
@@ -245,8 +244,36 @@
                 </div>
             </div>
         </main>
-        <footer>
 
+        <footer class="footer bg-dark footer-big">
+            <div class="container">
+                <div class="content">
+                    <div class="row">
+                        <div class="col-md-8 text-left">
+                            <h4>Datos del Alumno</h4>
+                            <div class="social-feed">
+                                <div class="feed-line">
+                                    <i class="fa fa-address-card "></i>
+                                    <p>Franco Cinnante - 37204492</p>
+                                </div>
+                                <div class="feed-line">
+                                    <i class="fa fa-graduation-cap"></i>
+                                    <p>Aplicaciones Para Dispositivos Moviles - Da Vinci</p>
+                                </div>
+                                <div class="feed-line">
+                                    <i class="fa fa-github"></i>
+                                    <p><a href="https://github.com/franchinna/TP01_APDM_21-05" target="_blank">https://github.com/franchinna/TP01_APDM_21-05</a></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <hr>
+                <div class="copyright float-right text-left ">
+                    Copyright © <span>Franco Cinnante - 2020.</span><br>
+                    Potenciado con <span><a href="https://demos.creative-tim.com/material-kit-pro/index.html" target="blank_">Material Kit</a></span> y <span><a href="https://vuejs.org/" target="blank_">VueJS</a></span>.
+                </div>
+            </div>
         </footer>
     </div>
     <!--Bootstrap JS--->
@@ -275,6 +302,7 @@
 
 
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="assets/js/paises.js"></script>
     <script src="assets/js/data-app.js"></script>
 
 </body>

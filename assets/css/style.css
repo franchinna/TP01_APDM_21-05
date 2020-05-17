@@ -1,3 +1,11 @@
+.navbar{
+    margin-bottom: 0px;
+}
+
+.alert-danger{
+    display: none;
+}
+
 h1 {
     font-size: 0 !important;
     padding: 0px !important;
@@ -16,6 +24,9 @@ nav input::placeholder {
     opacity: 1;
 }
 
+span{
+    font-weight: bold;
+}
 
 #registro {
     display: block;
@@ -49,6 +60,39 @@ select option {
     color: grey !important;
 }
 
+.PaisDeOrigen{
+    display: block;
+}
+
 .badge {
     padding: 2px 4px;
+}
+
+footer, .footer-big h4{
+    color: white;
+}
+
+.footer-big .social-feed i {
+    font-size: 20px;
+    display: table-cell;
+    padding-right: 10px;
+    width: 40px;
+}
+
+.footer-big .social-feed p {
+    display: table-cell;
+    vertical-align: top;
+    overflow: hidden;
+    padding-bottom: 10px;
+    max-width: 500px;
+}
+
+
+.footer-big .social-feed p a{
+    text-decoration: none;
+    color: #999;
+}
+
+.copyright{
+    color: dimgrey;
 }

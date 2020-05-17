@@ -4,8 +4,22 @@ const app = new Vue({
         changeView(name) {
             this.viewSelected = name;
         }
+        
+        
     },
     data: {
         viewSelected: 'registro',
+        
+        formularioPrincipal: {
+            nombre: '',
+            apellido: '',
+            email: '',
+            paises: paises,
+            paisOrigen: '',
+            sexo: '',
+            terms: false,
+            
+        }
+        
     }
 })
