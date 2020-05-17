@@ -18,10 +18,10 @@ btnConfirmacion.onclick = function(){
     
     divConfirmacion.style.display = 'block';
     
-    this.setAttribute('class', 'btn btn-warning');
-    btnRegistro.setAttribute('class', 'btn btn-default');
-    btnLogin.setAttribute('class', 'btn btn-default');
-    btnLoginConfirmacion.setAttribute('class', 'btn btn-default');
+    this.parentElement.setAttribute('class', 'nav-item active');
+    btnRegistro.parentElement.setAttribute('class', 'nav-item');
+    btnLogin.parentElement.setAttribute('class', 'nav-item');
+    btnLoginConfirmacion.parentElement.setAttribute('class', 'nav-item');
     
 };
 
@@ -33,10 +33,10 @@ btnRegistro.onclick = function(){
     
     divRegistro.style.display = 'block';
     
-    btnConfirmacion.setAttribute('class', 'btn btn-default');
-    btnLogin.setAttribute('class', 'btn btn-default');
-    btnLoginConfirmacion.setAttribute('class', 'btn btn-default');
-    this.setAttribute('class', 'btn btn-warning');
+    btnConfirmacion.parentElement.setAttribute('class', 'nav-item');
+    btnLogin.parentElement.setAttribute('class', 'nav-item');
+    btnLoginConfirmacion.parentElement.setAttribute('class', 'nav-item');
+     this.parentElement.setAttribute('class', 'nav-item active');
     
 };
 
@@ -48,10 +48,10 @@ btnLogin.onclick = function(){
     
     divLogin.style.display = 'block';
     
-    btnRegistro.setAttribute('class', 'btn btn-default');
-    btnConfirmacion.setAttribute('class', 'btn btn-default');
-    btnLoginConfirmacion.setAttribute('class', 'btn btn-default');
-    this.setAttribute('class', 'btn btn-warning');
+    btnRegistro.parentElement.setAttribute('class', 'nav-item');
+    btnConfirmacion.parentElement.setAttribute('class', 'nav-item');
+    btnLoginConfirmacion.parentElement.setAttribute('class', 'nav-item');
+     this.parentElement.setAttribute('class', 'nav-item active');
     
 };
 
@@ -63,9 +63,9 @@ btnLoginConfirmacion.onclick = function(){
     
     divLoginConfirmacion.style.display = 'block';
     
-    btnRegistro.setAttribute('class', 'btn btn-default');
-    btnConfirmacion.setAttribute('class', 'btn btn-default');
-    btnLogin.setAttribute('class', 'btn btn-default');
-    this.setAttribute('class', 'btn btn-warning');
+    btnRegistro.parentElement.setAttribute('class', 'nav-item');
+    btnConfirmacion.parentElement.setAttribute('class', 'nav-item');
+    btnLogin.parentElement.setAttribute('class', 'nav-item');
+     this.parentElement.setAttribute('class', 'nav-item active');
     
 };
