@@ -16,7 +16,6 @@ const app = new Vue({
             email: '',
             paises: paises,
             paisOrigen: '',
-            sexo: '',
             terms: false,
             
         }
