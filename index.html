@@ -78,35 +78,60 @@
         </header>
 
         <main>
-            <form-error v-show="viewSelected === 'registro'"></form-error>
-
+        
+            <div class="alert alert-danger" v-show="errores.length" v-for="error in errores">
+                <div class="container">
+                    <div class="alert-icon">
+                        <i class="material-icons">error_outline</i>
+                    </div>       
+                                 
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true"><i class="material-icons">clear</i></span>
+                    </button>
+                    
+                    <p><b>¡¡Error en la registración!! {{error}}</b></p>
+                </div>
+            </div>
+            
             <div class="container">
                 <div class="row justify-content-center">
                     <div id="registro" class="col-md-8 col my-3" v-show="viewSelected === 'registro'">
 
-                        <form>
+                        <form @submit.prevent="formSubmit">
                             <div class="form-row">
+                               
                                 <h3 class="col-12">Competa tus datos personales</h3>
+                                
                                 <div class="form-group col-md-6">
                                     <label for="inputNombre">Nombre</label>
-                                    <input type="nombre" class="form-control" id="inputNombre" placeholder="Ingresa tu nombre" v-model.trim="formularioPrincipal.nombre">
+                                    <input type="nombre"
+                                            class="form-control" 
+                                            id="inputNombre"
+                                            placeholder="Ingresa tu nombre"
+                                            v-model.trim="formularioPrincipal.nombre">
                                 </div>
+                                
+                                <div class="form-group col-6">
+                                    <label for="inputEmail">Ingresa tu Email</label>
+                                    <input type="email" class="form-control" id="inputEmail" placeholder="Ingresa tu email" v-model.trim="formularioPrincipal.email">
+                                </div>
+                                
                                 <div class="form-group col-md-6">
-                                    <label for="inputApellido">Apellido</label>
-                                    <input type="apellido" class="form-control" id="inputApellido" placeholder="Ingresa tu apellido" v-model.trim="formularioPrincipal.apellido">
-                                </div>
-                                <div class="form-group col-12">
-                                    <label for="inputEmail4">Ingresa tu Email</label>
-                                    <input type="email" class="form-control" id="inputEmail4" placeholder="Ingresa tu email" v-model.trim="formularioPrincipal.email">
-                                </div>
-                                <div class="form-group col-md-6">
-                                    <label for="inputPassword4">Password</label>
-                                    <input type="password" class="form-control" id="inputPassword4" placeholder="Ingresa una password">
+                                    <label for="inputPassword">Ingresa tu Password</label>
+                                    <input type="password" 
+                                    class="form-control" 
+                                    id="inputPassword" 
+                                    placeholder="Ingresa una password"
+                                    v-model.trim="formularioPrincipal.password">
                                 </div>
 
                                 <div class="form-group col-md-6">
-                                    <label for="inputPassword4">Password</label>
-                                    <input type="password" class="form-control" id="inputPassword4" placeholder="Confirma tu password">
+                                    <label for="inputPasswordConfirm">Confirma tu password</label>
+                                    <input type="password" 
+                                           class="form-control" 
+                                           id="inputPasswordConfirm" 
+                                           placeholder="Confirma tu password"
+                                           v-model.trim="formularioPrincipal.passwordConfirm">
                                 </div>
 
                                 <div class="form-group col-md-12 my-3">
@@ -117,6 +142,7 @@
                                     </select>
                                 </div>
                             </div>
+                            
                             <div class="form-group">
                                 <div class="form-check">
                                     <label class="form-check-label">
@@ -128,10 +154,10 @@
                                     </label>
                                 </div>
                             </div>
-                            <button type="button" @click="changeView('confirmacion')" class="btn btn-warning" :disabled="!formularioPrincipal.terms">Confirmar Registro</button>
+                            <button type="submit" class="btn btn-warning" :disabled="!formularioPrincipal.terms">Confirmar Registro</button>
                         </form>
                     </div>
-
+                                        
                     <confirmacion v-show="viewSelected === 'confirmacion'"></confirmacion>
 
                     <user-login v-show="viewSelected === 'login'"></user-login>
@@ -198,6 +224,7 @@
 
     <script src="assets/js/paises.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="assets/js/componentes/form-registrer.js"></script>
     <script src="assets/js/componentes/form-error.js"></script>
     <script src="assets/js/componentes/user-confirm.js"></script>
     <script src="assets/js/componentes/login-user.js"></script>

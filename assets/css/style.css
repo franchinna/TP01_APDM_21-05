@@ -21,6 +21,10 @@ nav input::placeholder {
     opacity: 1;
 }
 
+.error{
+    margin: 1px;
+}
+
 span{
     font-weight: bold;
 }
@@ -28,6 +32,14 @@ span{
 #registro {
     display: block;
     color: #495057;
+}
+
+.alert{
+    margin: 0;
+}
+
+.alert p{
+    margin: 0;
 }
 
 label {

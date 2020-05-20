@@ -10,6 +10,11 @@ Vue.component('formError', {
                         <span aria-hidden="true"><i class="material-icons">clear</i></span>
                     </button>
                     <b>¡¡Error en la registración!! Completa bien los campos</b>
+
+                    <ul>
+                        <li v-for="error in errores">{{error}}</li>
+                    </ul>
+
                 </div>
             </div>
             `
