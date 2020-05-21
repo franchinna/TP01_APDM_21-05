@@ -38,6 +38,7 @@ const app = new Vue({
     },
     data: {
         errores: [],
+        
         viewSelected: 'registro',
 
         formularioPrincipal: {

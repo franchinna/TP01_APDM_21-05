@@ -1,5 +1,9 @@
 Vue.component('confirmacion', {
-    props:["texto"],
+    props:{
+        nombre: String,
+        email: String,
+        pais: String
+    },
     template: /* html */`
      <div id="confirmacion" class="col-md-8 col my-3">
                         <div class="row justify-content-center">
@@ -9,24 +13,36 @@ Vue.component('confirmacion', {
 
                             <div class="col-12 text-center">
                                 <h2>¡Registracion Completa!</h2>
-                                <p>¡Bienvenido! -Nombre de usuario-</p>
+                                <p>¡Bienvenido! {{nombre}}</p>
                             </div>
 
                             <div class="col-12">
                                 <h3>Estos son tus datos</h3>
 
                                 <ul class="row justify-content-center list-group-flush">
-                                    <li class="col-md-5 list-group-item"><span class="material-icons">account_box</span></li>
-                                    <li class="col-md-5 list-group-item"><span class="material-icons">alternate_email</span> email</li>
-                                    <li class="col-md-5 list-group-item"><span class="material-icons">language</span> Pais de residencia</li>
-                                    <li class="col-md-5 list-group-item"><span class="material-icons">wc</span> Género </li>
+                                    <li class="col-md-5 list-group-item">
+                                        <span class="material-icons">account_box</span>
+                                        {{nombre}}
+                                    </li>
+                                    <li class="col-md-5 list-group-item">
+                                        <span class="material-icons">alternate_email</span>
+                                        {{email}}
+                                    </li>
+                                    <li class="col-md-5 list-group-item">
+                                        <span class="material-icons">language</span>
+                                        {{pais}}
+                                    </li>
+                                    <li class="col-md-5 list-group-item">
+                                        <span class="material-icons">vpn_key</span>
+                                        *********
+                                    </li>
                                 </ul>
 
                             </div>
 
                             <div class="col-12 text-center">
-                                <p class="text-muted">Si queres, podes borrar todo haciendo clic <a href="" class="badge badge-danger">aqui</a> <br>o</p>
-                                <button class="btn btn-warning">Inicia sesion con tus datos</button>
+                                <p class="text-muted">Si queres, podes borrar todo haciendo clic <a href="index.html" class="badge badge-danger">aqui</a> <br>o</p>
+                                <a class="btn btn-warning" @click="$emit('login')">Inicia sesion con tus datos</a>
                             </div>
 
                         </div>

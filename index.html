@@ -21,64 +21,14 @@
 <body>
 
     <div id="app">
-        <header>
-            <nav class="navbar navbar-expand-lg bg-warning">
-                <div class="container">
-                    <div class="navbar-translate">
-                        <h1 class="navbar-brand" href="#">Franco Cinnante VUE.JS</h1>
-                        <button class="navbar-toggler" type="button" data-toggle="collapse" aria-expanded="false" aria-label="Toggle navigation">
-                            <span class="sr-only">Toggle navigation</span>
-                            <span class="navbar-toggler-icon"></span>
-                            <span class="navbar-toggler-icon"></span>
-                            <span class="navbar-toggler-icon"></span>
-                        </button>
-                    </div>
-
-                    <div class="collapse navbar-collapse">
-                        <ul class="navbar-nav">
-                            <li class="nav-item">
-                                <a href="#" class="nav-link" id="btnRegistro" @click="changeView('registro')">
-                                    <i class="material-icons">
-                                        description
-                                    </i> Formulario
-
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="#" class="nav-link" id="btnConfirmacion" @click="changeView('confirmacion')">
-                                    <i class="material-icons">
-                                        check_circle
-                                    </i> Confirmación
-
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="#" class="nav-link" id="btnLogin" @click="changeView('login')">
-                                    <i class="material-icons">
-                                        description
-                                    </i> Login
-
-                                </a>
-                            </li>
-                        </ul>
-
-                        <form class="form-inline ml-auto">
-                            <div class="togglebutton ml-auto">
-                                <label>
-                                    <input type="checkbox">
-                                    <!--checked=""-->
-                                    <span class="toggle"></span>
-                                    Dark Mode
-                                </label>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </nav>
-        </header>
+       
+        <header-principal
+            @registro="changeView('registro')"
+            @confirmacion="changeView('confirmacion')"
+            @login="changeView('login')"
+        ></header-principal>
 
         <main>
-        
             <div class="alert alert-danger" v-show="errores.length" v-for="error in errores">
                 <div class="container">
                     <div class="alert-icon">
@@ -100,7 +50,7 @@
                         <form @submit.prevent="formSubmit">
                             <div class="form-row">
                                
-                                <h3 class="col-12">Competa tus datos personales</h3>
+                                <h2 class="col-12 text-center mb-3">Competa tus datos personales</h2>
                                 
                                 <div class="form-group col-md-6">
                                     <label for="inputNombre">Nombre</label>
@@ -111,7 +61,7 @@
                                             v-model.trim="formularioPrincipal.nombre">
                                 </div>
                                 
-                                <div class="form-group col-6">
+                                <div class="form-group col-md-6">
                                     <label for="inputEmail">Ingresa tu Email</label>
                                     <input type="email" class="form-control" id="inputEmail" placeholder="Ingresa tu email" v-model.trim="formularioPrincipal.email">
                                 </div>
@@ -155,49 +105,30 @@
                                 </div>
                             </div>
                             <button type="submit" class="btn btn-warning" :disabled="!formularioPrincipal.terms">Confirmar Registro</button>
+                            <a type="submit" class="btn btn-light" href="index.html">Borrar todo</a>
                         </form>
                     </div>
                                         
-                    <confirmacion v-show="viewSelected === 'confirmacion'"></confirmacion>
+                    <confirmacion 
+                        v-show="viewSelected === 'confirmacion'"
+                        :nombre="formularioPrincipal.nombre"
+                        :email="formularioPrincipal.email"
+                        :pais="formularioPrincipal.paisOrigen"
+                        @login="changeView('login')"
+                        ></confirmacion>
 
-                    <user-login v-show="viewSelected === 'login'"></user-login>
+                    <user-login v-show="viewSelected === 'login'" ></user-login>
 
-                    <login-confirm v-show="viewSelected === 'loginConfirmacion'"></login-confirm>
                 </div>
             </div>
         </main>
 
-        <footer class="footer bg-dark footer-big">
-            <div class="container">
-                <div class="content">
-                    <div class="row">
-                        <div class="col-md-8 text-left">
-                            <h4>Datos del Alumno</h4>
-                            <div class="social-feed">
-                                <div class="feed-line">
-                                    <i class="fa fa-address-card "></i>
-                                    <p>Franco Cinnante - 37204492</p>
-                                </div>
-                                <div class="feed-line">
-                                    <i class="fa fa-graduation-cap"></i>
-                                    <p>Aplicaciones Para Dispositivos Moviles - Da Vinci</p>
-                                </div>
-                                <div class="feed-line">
-                                    <i class="fa fa-github"></i>
-                                    <p><a href="https://github.com/franchinna/TP01_APDM_21-05" target="_blank">https://github.com/franchinna/TP01_APDM_21-05</a></p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <hr>
-                <div class="copyright float-right text-left ">
-                    Copyright © <span>Franco Cinnante - 2020.</span><br>
-                    Potenciado con <span><a href="https://demos.creative-tim.com/material-kit-pro/index.html" target="blank_">Material Kit</a></span> y <span><a href="https://vuejs.org/" target="blank_">VueJS</a></span>.
-                </div>
-            </div>
-        </footer>
+        <footer-principal></footer-principal>
     </div>
+    
+    <script src="assets/js/paises.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    
     <!--Bootstrap JS--->
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
@@ -220,17 +151,15 @@
 
     <!-- Control Center for Material Kit: parallax effects, scripts for the example pages etc -->
     <script src="material-kit-master/assets/js/material-kit.js?v=2.0.4" type="text/javascript"></script>
-
-
-    <script src="assets/js/paises.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    
     <script src="assets/js/componentes/form-registrer.js"></script>
     <script src="assets/js/componentes/form-error.js"></script>
     <script src="assets/js/componentes/user-confirm.js"></script>
     <script src="assets/js/componentes/login-user.js"></script>
     <script src="assets/js/componentes/login-confirm.js"></script>
+    <script src="assets/js/componentes/footer.js"></script>
+    <script src="assets/js/componentes/header.js"></script>
     <script src="assets/js/data-app.js"></script>
-
 
 </body>
 
